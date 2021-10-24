@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meníčka</title>
+</head>
+<body>
+    <div class="menus-container">
+        <% menus.forEach((menu, index) => { %>
+            <div class="menu">
+                <br>
+                <hr>
+                <h1> <%=menu.restaurant%> </h1>
+                <hr>
+                <% if (menu.soup?.name) { %>
+                    <div class="meal soup"> 
+                        <span class="soup-key key">Polévka: </span>
+                        <span class="soup-value value"><%=menu.soup.name%></span>
+                        <% if (menu.soup.price) { %>
+                            <span class="price soup-price"><%=menu.soup.price%> Kč</span>
+                        <% } %>
+                    </div>
+                <% } %>
+                <% menu.meals.forEach((meal, index) => { %>
+                    <div class="meal meal-<%=index + 1%>"> 
+                        <span class="meal-key key"><%=index + 1%>: </span>
+                        <span class="meal-value value"><%=meal.name%></span>
+                        <span class="price"><%=meal.price%> Kč</span>
+                    </div>
+                <% }) %>
+            </div>
+        <% }) %>
+    </div>
+</body>
+<style>
+    html, body {
+        background-color: black;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 4096px;
+        margin: auto;
+        padding: 0 0.5em;
+    }
+
+    @media only screen and (min-width: 1024px) {
+            .menus-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5em;
+        }
+    }
+    
+    h1 {
+        margin: 0.4em 0
+    }
+    .meal {
+        display: grid;
+        grid-template-columns: 5em 1fr 5em;
+        grid-gap: 2em;
+        padding: 0.65em 0;
+        font-size: large;
+        line-height: 1.4em;
+    }
+    .meal::first-letter {
+        text-transform: uppercase;
+    }
+    .key {
+        font-weight: 600;
+        text-align: right;
+    }
+</style>
+</html>
