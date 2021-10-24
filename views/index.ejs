@@ -63,8 +63,25 @@
         font-size: large;
         line-height: 1.4em;
     }
-    .meal::first-letter {
-        text-transform: uppercase;
+    @media only screen and (max-width: 767px) {
+        .meal {
+            grid-template-columns: 1em 1fr 3.5em;
+            grid-gap: 1em;
+            font-size: medium;
+        }
+        .soup-key {
+            visibility: hidden;
+        }
+        .soup-key:before {
+            content: 'P:';
+            visibility: visible;
+        }
+    }
+    .value::first-letter {
+        text-transform: capitalize;
+    }
+    .value::first-letter {
+        text-transform: capitalize;
     }
     .key {
         font-weight: 600;
