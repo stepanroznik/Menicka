@@ -10,10 +10,10 @@ app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
     const results = await Promise.all([
-        getMenuKralovskaCesta(),
-        getMenuRacek(),
-        getMenuKlubCestovatelu(),
         getMenuMaHostina(),
+        getMenuKlubCestovatelu(),
+        getMenuRacek(),
+        getMenuKralovskaCesta(),
     ].map(p => p.catch(e => e)));
     const menus = results.filter(result => !(result instanceof Error));
     res.render('index', { menus })
