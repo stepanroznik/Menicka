@@ -26,7 +26,7 @@ const getMenuKralovskaCesta = async () => {
 
     const kralovskaCesta = { restaurant: 'Královská cesta', soup: {}, meals: [] };
 
-    $('.tabulka_jidla').find('tr td:first-child').each((i, e) => {
+    $('.tabulka_jidla:first-of-type').find('tr td:first-child').each((i, e) => {
         if (i === 0) {
             kralovskaCesta.soup = { name: $(e).text().trim().replace(/&nbsp;/g, ''), price: 0 }
         } else {
