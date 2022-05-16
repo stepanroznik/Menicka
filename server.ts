@@ -215,4 +215,6 @@ app.get('/simple|/simplified|/old|/original|/legacy|/no-script', async (req, res
     res.render('index', { menus });
 });
 
+app.use(express.static('dist'));
+
 app.listen(process.env.PORT);
