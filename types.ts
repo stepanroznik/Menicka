@@ -4,3 +4,9 @@ export interface IMenuItem {
     soup: { name: string; price?: number | string };
     meals: { name: string; price: number | string }[];
 }
+
+export interface IMenuCode {
+    code: string
+    name: string
+    url: string
+}
