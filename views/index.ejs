@@ -11,7 +11,7 @@
         <% menus.forEach((menu, index) => { %>
             <div class="menu">
                 <hr>
-                <h1> <%=menu.restaurant%> </h1>
+                <h1> <a href="<%=menu.url%>"> <%=menu.restaurant%> </a> </h1>
                 <hr>
                 <% if (menu.soup?.name) { %>
                     <div class="meal soup"> 
@@ -50,9 +50,14 @@
             gap: 1.5em;
         }
     }
+
+    a, a:visited, a:active {
+        color: inherit;
+        text-decoration: none;
+    }
     
     h1 {
-        margin: 0.4em 0
+        margin: 0.4em 0;
     }
     .meal {
         display: grid;

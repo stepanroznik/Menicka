@@ -1,6 +1,5 @@
 {
   "name": "menicka",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,6 +14,11 @@
     "cheerio": "^1.0.0-rc.10",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "iconv-lite": "^0.6.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "ts-node": "^10.7.0"
   }
 }
