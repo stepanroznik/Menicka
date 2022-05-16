@@ -17,6 +17,7 @@ module.exports = {
         'no-nested-ternary': 'off',
         'linebreak-style': 'off',
         'no-plusplus': 'off',
+        'max-len': ['warn', 120],
         semi: 'warn',
         'comma-dangle': 'warn',
         radix: 'off',
