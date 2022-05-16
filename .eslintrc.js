@@ -2,6 +2,7 @@ module.exports = {
     root: true,
     env: {
         node: true,
+        'vue/setup-compiler-macros': true,
     },
     extends: [
         'plugin:vue/vue3-essential',
@@ -16,6 +17,8 @@ module.exports = {
         'no-nested-ternary': 'off',
         'linebreak-style': 'off',
         'no-plusplus': 'off',
+        semi: 'warn',
+        'comma-dangle': 'warn',
         radix: 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-explicit-any': 'off',

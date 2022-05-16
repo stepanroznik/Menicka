@@ -1,27 +1,78 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <div class="menus-container">
+        <Suspense v-for="menu in availableMenus" :key="menu">
+            <RestaurantMenu :code="menu" />
+        </Suspense>
+    </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script setup lang="ts">
+import RestaurantMenu from './components/RestaurantMenu.vue';
 
-export default defineComponent({
-    name: 'App',
-    components: {
-        HelloWorld,
-    },
-});
+const availableMenus = [
+    'ma-hostina',
+    'klub-cestovatelu',
+    'borgeska',
+    'kralovska-cesta',
+    'racek',
+];
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html, body {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 4096px;
+    margin: auto;
+    padding: 0.5em;
+}
+
+@media only screen and (min-width: 1024px) {
+        .menus-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5em;
+    }
+}
+
+a, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+h1 {
+    margin: 0.4em 0;
+}
+.meal {
+    display: grid;
+    grid-template-columns: 5em 1fr 5em;
+    grid-gap: 2em;
+    padding: 0.65em 0;
+    font-size: large;
+    line-height: 1.4em;
+}
+@media only screen and (max-width: 767px) {
+    .meal {
+        grid-template-columns: 1em 1fr 3.5em;
+        grid-gap: 1em;
+        font-size: medium;
+    }
+    .soup-key {
+        visibility: hidden;
+    }
+    .soup-key:before {
+        content: 'P:';
+        visibility: visible;
+    }
+}
+.value::first-letter {
+    text-transform: capitalize;
+}
+.value::first-letter {
+    text-transform: capitalize;
+}
+.key {
+    font-weight: 600;
+    text-align: right;
 }
 </style>

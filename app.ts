@@ -1,15 +1,10 @@
 import express from 'express';
+import cors from 'cors';
 import env from 'dotenv';
 import axios from 'axios';
 import iconv from 'iconv-lite';
 import { load } from 'cheerio';
-
-interface IMenuItem {
-    restaurant: string;
-    url: string;
-    soup: { name: string; price?: number | string };
-    meals: { name: string; price: number | string }[];
-}
+import { IMenuItem } from './types';
 
 axios.interceptors.response.use((response) => {
     const ctype = response.headers['content-type'];
@@ -22,6 +17,7 @@ axios.interceptors.response.use((response) => {
 
 env.config();
 const app = express();
+app.use(cors({ origin: '*' }));
 app.set('view engine', 'ejs');
 
 const getMenuKralovskaCesta = async () => {
@@ -183,6 +179,27 @@ const getMenuBorgeska = async () => {
 
     return menus[today - 1];
 };
+
+app.get('/ma-hostina', async (req, res) => {
+    const menu = await getMenuMaHostina();
+    res.json(menu);
+});
+app.get('/klub-cestovatelu', async (req, res) => {
+    const menu = await getMenuKlubCestovatelu();
+    res.json(menu);
+});
+app.get('/borgeska', async (req, res) => {
+    const menu = await getMenuBorgeska();
+    res.json(menu);
+});
+app.get('/kralovska-cesta', async (req, res) => {
+    const menu = await getMenuKralovskaCesta();
+    res.json(menu);
+});
+app.get('/racek', async (req, res) => {
+    const menu = await getMenuRacek();
+    res.json(menu);
+});
 
 app.get('/simple|/simplified|/old|/original|/legacy|/no-script', async (req, res) => {
     const results = await Promise.all(
