@@ -7,8 +7,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-server": "tsc --project tsconfig.server.json",
     "lint": "vue-cli-service lint",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build && npm run build-server"
   },
   "main": "index.js",
   "dependencies": {
