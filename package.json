@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "postinstall": "npm run build && npx tsc"
+    "postinstall": "npm run build"
   },
   "main": "index.js",
   "dependencies": {
