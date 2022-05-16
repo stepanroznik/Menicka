@@ -67,7 +67,8 @@ const itemsModel = computed({
 }
 .draggable-info {
     display: block;
-    margin-bottom: 0.25em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
 }
 .draggable-container {
     display: grid;
