@@ -150,7 +150,7 @@ const getMenuRacek = async () => {
 };
 
 const getMenuBorgeska = async () => {
-    const today = new Date().getDay();
+    // const today = new Date().getDay();
     const menus: IMenuItem[] = [];
     const url = 'https://www.menicka.cz/4919-borgeska.html';
 
@@ -165,8 +165,9 @@ const getMenuBorgeska = async () => {
             $(e)
                 .find('ul > .jidlo')
                 .each((ii, meal) => {
-                    const mealName = $(meal).find('.polozka').text();
+                    let mealName = $(meal).find('.polozka').text();
                     const mealPrice = $(meal).find('.cena').text();
+                    if (mealName.includes('GULÁŠ')) mealName += ' (ale tentokrát fakt je, přísahám)';
                     meals.push({ name: mealName, price: parseInt(mealPrice) });
                 });
             menus.push({
@@ -177,7 +178,7 @@ const getMenuBorgeska = async () => {
             });
         });
 
-    return menus[today - 1];
+    return menus[0];
 };
 
 app.get('/ma-hostina', async (req, res) => {
