@@ -116,13 +116,19 @@ body {
 }
 
 .options {
-    display: flex;
+    display: none;
     gap: 1em;
     flex-direction: row-reverse;
     align-items: flex-end;
     position: fixed;
     bottom: 1em;
     right: 1em;
+}
+
+@media only screen and (min-width: 1024px) {
+    .options {
+        display: flex;
+    }
 }
 
 .options svg {

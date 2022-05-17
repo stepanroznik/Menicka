@@ -44,7 +44,7 @@ const getMenuKralovskaCesta = async () => {
                         .text()
                         .trim()
                         .replace(/&nbsp;/g, ''),
-                    price: i === 3 ? 135 : 119,
+                    price: i === 1 ? 129 : i === 2 ? 139 : 149,
                 });
             }
         });
@@ -82,7 +82,7 @@ const getMenuKlubCestovatelu = async () => {
                         .text()
                         .trim()
                         .replace(/&nbsp;/g, ''),
-                    price: i === 1 ? 119 : i === 2 ? 125 : 129,
+                    price: i === 1 ? 124 : i === 2 ? 130 : 134,
                 });
             }
         });
