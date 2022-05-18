@@ -75,7 +75,8 @@ const loadSavedRestaurants = () => {
             localStorage.getItem('saved-restaurants') as string,
         );
         if (loadedItems) {
-            savedItems = availableRestaurants.filter((a) => loadedItems.includes(a.code));
+            savedItems = loadedItems.map((l) => availableRestaurants
+                .find((a) => a.code === l)).filter((l) => l) as IMenuCode[];
         }
     } catch (e) {
         console.error(e);
