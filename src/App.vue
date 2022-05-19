@@ -48,19 +48,31 @@ import SettingsModal from './components/SettingsModal.vue';
 const showSettings = ref(false);
 
 const availableRestaurants: IMenuCode[] = [
-    { code: 'ma-hostina', name: 'Má Hostina', url: 'https://menu2go.cz/' },
+    {
+        code: 'ma-hostina',
+        name: 'Má Hostina',
+        url: 'https://www.mahostina.cz/',
+    },
     {
         code: 'klub-cestovatelu',
         name: 'Klub cestovatelů',
         url: 'https://www.klubcestovatelubrno.cz/denni-menu/',
     },
-    { code: 'borgeska', name: 'Borgeska', url: 'https://www.mahostina.cz/' },
+    {
+        code: 'borgeska',
+        name: 'Borgeska',
+        url: 'https://www.menicka.cz/4919-borgeska.html',
+    },
     {
         code: 'kralovska-cesta',
         name: 'Královská cesta',
+        url: 'https://menu2go.cz/',
+    },
+    {
+        code: 'racek',
+        name: 'Racek',
         url: 'https://www.restauraceracek.cz/tydenni-menu/',
     },
-    { code: 'racek', name: 'Racek', url: 'https://www.menicka.cz/4919-borgeska.html' },
 ];
 
 const displayedRestaurants = ref([] as IMenuCode[]);
