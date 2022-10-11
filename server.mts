@@ -160,10 +160,10 @@ const getMenuBorgeska = async () => {
     $('.obsah')
         .find('.menicka')
         .each((i, e) => {
-            const soupName = $(e).find('ul > .polevka .polozka').text();
+            const soupName = $(e).find('ul .polevka .polozka').text();
             const meals: IMenuItem['meals'] = [];
             $(e)
-                .find('ul > .jidlo')
+                .find('ul .jidlo')
                 .each((ii, meal) => {
                     let mealName = $(meal).find('.polozka').text();
                     const mealPrice = $(meal).find('.cena').text();
