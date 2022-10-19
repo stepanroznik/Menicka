@@ -65,6 +65,9 @@ const getMenuKlubCestovatelu = async () => {
         meals: [],
     };
 
+    const pricesText = $('.entry-content').find('p strong').first().text();
+    const prices = pricesText.split(',- / ').map((price) => parseInt(price.substring(4, 4 + 3)));
+
     $('.entry-content')
         .find(`h3:nth-of-type(${today}) + *, ol:nth-of-type(${today}) li`)
         .each((i, e) => {
@@ -82,7 +85,7 @@ const getMenuKlubCestovatelu = async () => {
                         .text()
                         .trim()
                         .replace(/&nbsp;/g, ''),
-                    price: i === 1 ? 124 : i === 2 ? 130 : 134,
+                    price: prices[i - 1],
                 });
             }
         });
