@@ -24,11 +24,19 @@
                 </template>
             </draggable>
         </div>
+        <div class="api-settings">
+            <label for="api-input"> Api endpoint
+                <input id="api-input" v-model="newEndpoint" type="text">
+            </label>
+            <button @click="emit('change-api', newEndpoint)">
+                Set
+            </button>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed, PropType } from 'vue';
+import { computed, PropType, ref } from 'vue';
 import Draggable from 'vue3-draggable';
 import type { IMenuCode } from '../../types';
 
@@ -43,7 +51,9 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(['reorder']);
+const emit = defineEmits(['reorder', 'change-api']);
+
+const newEndpoint = ref('');
 
 const itemsModel = computed({
     get() {
@@ -85,5 +95,15 @@ const itemsModel = computed({
     padding: 1em;
     background: #222;
     border-radius: 0.33em;
+}
+
+.api-settings {
+    display: flex;
+    gap: 2px;
+    font-size: small;
+}
+
+.api-settings button {
+    font-size: small;
 }
 </style>

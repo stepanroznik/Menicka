@@ -26,16 +26,18 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    apiURL: {
+        type: String,
+        required: true,
+    },
 });
-
-const apiURL: string = process.env.VUE_APP_URL;
 
 const menu = ref(null as IMenuItem | null);
 const isLoading = ref(true);
 
 const getMenu = async () => {
     isLoading.value = true;
-    const response = await axios.get(`${apiURL}/${props.code}`);
+    const response = await axios.get(`${props.apiURL}/${props.code}`);
     menu.value = response.data;
     isLoading.value = false;
 };

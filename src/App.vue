@@ -1,5 +1,5 @@
 <template>
-    <div class="menus-container">
+    <div class="menus-container" :key="apiURL">
         <div class="menu" v-for="restaurant in displayedRestaurants" :key="restaurant.code">
             <hr />
             <h1>
@@ -7,7 +7,7 @@
             </h1>
             <hr />
             <Suspense>
-                <RestaurantMenu :code="restaurant.code" />
+                <RestaurantMenu :apiURL="apiURL" :code="restaurant.code" />
                 <template #fallback>
                     <div
                         class="menu"
@@ -32,6 +32,7 @@
                 :hiddenItems="hiddenRestaurants"
                 v-if="showSettings"
                 @reorder="saveRestaurants"
+                @change-api="$event => apiURL = $event"
             />
         </Transition>
     </div>
@@ -79,6 +80,7 @@ const displayedRestaurants = ref([] as IMenuCode[]);
 const hiddenRestaurants = computed(() => availableRestaurants.filter(
     (a) => !displayedRestaurants.value.map((d) => d.code).includes(a.code),
 ));
+const apiURL = ref(process.env.VUE_APP_URL);
 
 const loadSavedRestaurants = () => {
     let savedItems: IMenuCode[] | undefined;
